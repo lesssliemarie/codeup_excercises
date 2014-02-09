@@ -12,17 +12,25 @@ do {
 	$endingNum = intval(trim(fgets(STDIN)));
 
 	fwrite(STDOUT, "What number do you want to count by?\n");
-	$countBy = intval(trim(fgets(STDIN))); 
+	$countBy = intval(trim(fgets(STDIN)));
 
-
-//loop for positive increments when $startingNum is less than $endingNum
-	if ($countBy > 0 && $startingNum < $endingNum) {
+// loop using increment of 1 if no increment was input
+	if ($countBy == 0) {
+		echo "Can't decide? Let's just use 1.\n";
+		$countBy = 1;
 		echo "COUNT IT:\n";
 		for ($i = $startingNum; $i <= $endingNum; $i += $countBy) {
 			echo "$i\n";
 			$startGame = false;
 		}
-//loop for negative increments when $startingNum is greater than $endingNum
+// loop for positive increments when $startingNum is less than $endingNum	 
+	}	elseif ($countBy > 0 && $startingNum < $endingNum) {
+		echo "COUNT IT:\n";
+		for ($i = $startingNum; $i <= $endingNum; $i += $countBy) {
+			echo "$i\n";
+			$startGame = false;
+		}
+// loop for negative increments when $startingNum is greater than $endingNum
 	} elseif ($countBy < 0 && $startingNum > $endingNum) {
 		echo "COUNT IT:\n";
 		$countBy = abs($countBy);
@@ -30,7 +38,7 @@ do {
 			echo "$i\n";
 			$startGame = false;
 		}
-//when users increments and numbers don't count up or down properly
+// when users increments and numbers don't count up or down properly
 	} else {
 			
 			echo "Do you know how counting up or down works?\nLet's try entering those numbers again...\n";
