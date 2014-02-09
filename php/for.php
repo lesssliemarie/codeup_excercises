@@ -1,22 +1,42 @@
 <?php
 
-// prompt a user for a starting number
-fwrite(STDOUT, "Enter a starting number, yo.\n");
-
-// make the input an integer and assign it to a $startingNum variable
-$startingNum = intval(trim(fgets(STDIN)));
-
-// prompt a user for a ending number
-fwrite(STDOUT, "And an ending number, yo.\n");
-
-// make the input an integer and assign it to a $endingNum variable
-$endingNum = intval(trim(fgets(STDIN)));
 
 
-// display athe range of numbers from start to end using a for loop
-for ($i = $startingNum; $i <= $endingNum; $i++) {
-	echo "$i\n";
-}
+$startGame = true;
+// prompt a user for a starting number, ending number, and increment to count by
+do {
+	fwrite(STDOUT, "Enter a starting number, yo.\n");
+	$startingNum = intval(trim(fgets(STDIN))); 
+
+	fwrite(STDOUT, "And an ending number.\n");
+	$endingNum = intval(trim(fgets(STDIN)));
+
+	fwrite(STDOUT, "What number do you want to count by?\n");
+	$countBy = intval(trim(fgets(STDIN))); 
+
+
+//loop for positive increments when $startingNum is less than $endingNum
+	if ($countBy > 0 && $startingNum < $endingNum) {
+		echo "COUNT IT:\n";
+		for ($i = $startingNum; $i <= $endingNum; $i += $countBy) {
+			echo "$i\n";
+			$startGame = false;
+		}
+//loop for negative increments when $startingNum is greater than $endingNum
+	} elseif ($countBy < 0 && $startingNum > $endingNum) {
+		echo "COUNT IT:\n";
+		$countBy = abs($countBy);
+		for ($i = $startingNum; $i >= $endingNum; $i -= $countBy) {
+			echo "$i\n";
+			$startGame = false;
+		}
+//when users increments and numbers don't count up or down properly
+	} else {
+			
+			echo "Do you know how counting up or down works?\nLet's try entering those numbers again...\n";
+	}
+
+} while ($startGame == true);
 
 
 ?>
