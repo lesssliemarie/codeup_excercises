@@ -1,12 +1,13 @@
 <?php
 
 
-
 $startGame = true;
 // prompt a user for a starting number, ending number, and increment to count by
 do {
+	
+// only allow users to pass numbers
 	fwrite(STDOUT, "Enter a starting number, yo.\n");
-	$startingNum = intval(trim(fgets(STDIN))); 
+	$startingNum = intval(trim(fgets(STDIN)));
 
 	fwrite(STDOUT, "And an ending number.\n");
 	$endingNum = intval(trim(fgets(STDIN)));
@@ -15,7 +16,7 @@ do {
 	$countBy = intval(trim(fgets(STDIN)));
 
 // loop using increment of 1 if no increment was input
-	if ($countBy == 0) {
+	if ($countBy == 0 && $startingNum < $endingNum) {
 		echo "Can't decide? Let's just use 1.\n";
 		$countBy = 1;
 		echo "COUNT IT:\n";
