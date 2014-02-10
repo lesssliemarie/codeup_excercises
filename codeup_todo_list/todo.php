@@ -3,8 +3,14 @@
 // Create array to hold list of todo items
 $items = array();
 
+
+
 // The loop!
 do {
+    // ghost index 0 so new items start at 1
+    $items[0] = 'ghost';
+    unset($items[0]);
+
     // Iterate through list items
     foreach ($items as $key => $item) {
         // Display each item and a newline
