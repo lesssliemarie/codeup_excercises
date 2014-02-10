@@ -35,11 +35,10 @@ $books = array(
 foreach ($books as $title => $book) {
 
 	if ($book['published'] > 1950) {
-			echo strtoupper("$title\n");
-
-		foreach ($book as $spec => $specInfo) {
-			echo "  $spec: $specInfo\n";
-		}
+		echo strtoupper("$title\n");
+		echo "  Published: " . $book['published'] . "\n";
+		echo "  Author: " . $book['author'] . "\n";
+		echo "  Pages: " . $book['pages'] . "\n";
 	}
 }
 
