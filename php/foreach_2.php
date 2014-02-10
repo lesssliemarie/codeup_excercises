@@ -32,13 +32,6 @@ $books = array(
 // output the book's title, then list the key value pairs
 // ONLY for books written after 1950
 
-// foreach ($books as $title => $book) {
-// 	echo strtoupper("$title\n");
-// 		foreach ($book as $spec => $specInfo) {
-// 			echo "  $spec: $specInfo\n";
-// 		}
-// 	}
-
 foreach ($books as $title => $book) {
 
 	if ($book['published'] > 1950) {
