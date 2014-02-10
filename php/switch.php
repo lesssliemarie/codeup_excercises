@@ -1,11 +1,14 @@
 <?php
 
 // Set the default timezone
-date_default_timezone_set('America/Chicago');
+// date_default_timezone_set('America/Chicago');
 
 // Get Day of Week as number
 // 1 (for Monday) through 7 (for Sunday)
-$day_of_week = date('N');
+
+// generate a random number to represent the day of the week
+// create a default case for the weekend
+$day_of_week = rand(1, 7);
 
 switch($day_of_week) {
     case 1:
@@ -23,12 +26,8 @@ switch($day_of_week) {
     case 5:
     	echo "Today is Friday\n";
     	break;
-    case 6:
-    	echo "Today is Saturday\n";
-    	break;
-    case 7:
-    	echo "Today is Sunday\n";
-    	break;
+    default:
+    	echo "IT'S THE WEEKEND, YO!\n";
 }
 
 ?>
