@@ -1,42 +1,49 @@
 <?php
 
-function validate($a, $b) {
-	if (!is_numeric($a) || !is_numeric($b)) {
-		echo "ERROR: You need two NUMBERS to do math, smartie.\nDo these both look like numbers?\n";
-		var_dump($a);
-		var_dump($b);
-		echo "I'm kicking you out. Try again!\n";
-		exit(0);
-	} 
+function paramsAreValid($a, $b) {
+	return (is_numeric($a) && is_numeric($b));
 }
 
 function add($a, $b) {
-	validate($a, $b);
- 	echo $a + $b . "\n";		
+	if (paramsAreValid($a, $b)) {
+		return $a + $b;
+	} else {
+		return 0;
+	}
 }
 
 function subtract($a, $b) {
-	validate($a, $b);
-	echo $a - $b . "\n";	
+	if (paramsAreValid($a, $b)) {
+		return $a - $b;
+	} else {
+		return 0;
+	}
 }
 
 function multiply($a, $b) {
-	validate($a, $b);
-	echo $a * $b . "\n";		
+	if (paramsAreValid($a, $b)) {
+		return $a * $b;
+	} else {
+		return 0;
+	}	
 }
 
 function divide($a, $b) {
-	validate($a, $b);
-	if ($b != 0) {
-		 echo $a / $b . "\n";
-	} else {
-		echo "You can't divide by 0! DUH\n";
+	if (paramsAreValid($a, $b)) {
+		if ($b != 0) {
+			return $a / $b;
+		} else {
+			return 0;
+		}
 	}		
 }
 
 function modulus($a, $b) {
-	validate($a, $b);
-	echo $a % $b . "\n";		
+	if (paramsAreValid($a, $b)) {
+		return $a % $b;
+	} else {
+		return 0;
+	}
 }
 
 add('cat', 2);
