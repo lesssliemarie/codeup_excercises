@@ -16,9 +16,14 @@ function divide($a, $b) {
 	echo $a / $b . "\n";
 }
 
+function modulus($a, $b) {
+	echo $a % $b . "\n";
+}
+
 add(1, 2);
 subtract(10, 1);
 multiply(2, 6);
 divide(50, 2);
+modulus(10, 3);
 
 ?>
