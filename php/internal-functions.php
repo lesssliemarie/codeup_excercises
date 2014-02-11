@@ -18,6 +18,9 @@ setOrEmpty('$nothing', $nothing);
 setOrEmpty('$something',$something);
 
 // TEST: If var $nothing is set, display '$nothing is SET'
+// Before first conditional, unset($nothing)
+// ^ $nothing still reads as empty
+unset($nothing);
 
 if (isset($nothing)) {
 	echo "\$nothing is SET\n";
