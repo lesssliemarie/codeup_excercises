@@ -30,9 +30,11 @@ if (empty($nothing)) {
 }
 
 // TEST: If var $something is set, display '$something is SET'
+// UPDATE TEST: change to check if empty, what does it do?
+// ^ will also echo that it is empty
 
-if (isset($something)) {
-	echo "\$something is SET\n";
+if (empty($something)) {
+	echo "\$something is EMPTY\n";
 }
 
 // Serialize the array $array, and output the results
