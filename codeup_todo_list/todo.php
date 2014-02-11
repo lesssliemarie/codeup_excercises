@@ -15,6 +15,7 @@ do {
     foreach ($items as $key => $item) {
         // Display each item and a newline
         echo "[{$key}] {$item}\n";
+        // Use switch to hide array $key 0's value
     }
 
     // Show the menu options
