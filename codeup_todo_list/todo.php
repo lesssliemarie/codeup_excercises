@@ -52,7 +52,7 @@ do {
     } elseif ($input == 'S') {      
         // How do you want to sort?
         echo 'Would you like to sort (A)-Z, or (Z)-A?: ';
-        $sortBy = get_input(true);
+        $sortBy = get_input(TRUE);
         // Sort according to input
         if ($sortBy == 'A') {
             sort($items);
