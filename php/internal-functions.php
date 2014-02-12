@@ -6,24 +6,22 @@ $array = array(1,2,3);
 
 // Create a funciton that checks if a variable is set or empty, and display "$variable_name is SET|EMPTY"
 
-function setOrEmpty($name, $var) {
-	if (isset($var)) {
-		echo "The variable $name is set\n";
-	} elseif (empty($var)) {
-		echo "The variable $name is empty\n";
+function setOrEmpty($var) {
+	if (empty($var)) {
+		return true;
+	} elseif (isset($var)) {
+		return true;
+	} else {
+		return false;
 	}
 }
 
-setOrEmpty('$nothing', $nothing);
-setOrEmpty('$something', $something);
-setOrEmpty('$array', $array);
-
 // TEST: If var $nothing is set, display '$nothing is SET'
 // Before first conditional, unset($nothing)
-// ^ $nothing still reads as empty
-unset($nothing);
+// ^ throws error of undefined variable
+// unset($nothing);
 
-if (isset($nothing)) {
+if (setOrEmpty($nothing)) {
 	echo "\$nothing is SET\n";
 } else {
 	echo "\$nothing is NOT SET\n";
@@ -31,7 +29,7 @@ if (isset($nothing)) {
 
 // TEST: If var $nothing is empty, display '$nothing is EMPTY'
 
-if (empty($nothing)) {
+if (setOrEmpty($nothing)) {
 	echo "\$nothing is EMPTY\n";
 } else {
 	echo "\$nothing is NOT EMPTY!\n";
@@ -39,7 +37,7 @@ if (empty($nothing)) {
 
 // TEST: If var $something is set, display '$something is SET'
 
-if (isset($something)) {
+if (setOrEmpty($something)) {
 	echo "\$something is SET\n";
 } else {
 	echo "\$something is NOT SET\n";
