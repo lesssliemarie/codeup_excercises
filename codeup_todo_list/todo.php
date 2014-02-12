@@ -36,9 +36,7 @@ do {
     echo '(N)ew item, (R)emove item, (Q)uit : ';
 
     // Get the input from user
-    // Use trim() to remove whitespace and newlines
-    $input = get_input(true);
-
+    $input = get_input(TRUE);
 
     // Check for actionable input
     if ($input == 'N') {
@@ -50,8 +48,7 @@ do {
         // Remove which item?
         echo 'Enter item number to remove: ';
         // Get array key
-        $key = get_input();
-        $key = $key - 1;
+        $key = get_input() - 1;
         // Remove from array
         unset($items[$key]);
         // Reorders array $keys
