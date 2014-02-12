@@ -29,7 +29,7 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (S)ort items, (Q)uit : ';
 
     // Get the input from user
     $input = get_input(TRUE);
@@ -49,6 +49,16 @@ do {
         unset($items[$key - 1]);
         // Reorders array $keys
         $items = array_values($items);
+    } elseif ($input == 'S') {      
+        // How do you want to sort?
+        echo 'Would you like to sort (A)-Z, or (Z)-A?: ';
+        $sortBy = get_input(true);
+        // Sort according to input
+        if ($sortBy == 'A') {
+            sort($items);
+        } elseif ($sortBy == 'Z') {
+            rsort($items);
+        }
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
