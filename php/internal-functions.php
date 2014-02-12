@@ -15,7 +15,8 @@ function setOrEmpty($name, $var) {
 }
 
 setOrEmpty('$nothing', $nothing);
-setOrEmpty('$something',$something);
+setOrEmpty('$something', $something);
+setOrEmpty('$array', $array);
 
 // TEST: If var $nothing is set, display '$nothing is SET'
 // Before first conditional, unset($nothing)
