@@ -20,11 +20,8 @@ function list_items($list)
 function get_input($upper = FALSE) 
 {
     // Return filtered STDIN input
-    if ($upper == TRUE) {
-        return strtoupper(trim(fgets(STDIN)));
-    } else {
-        return (trim(fgets(STDIN)));
-    }
+    $input = trim(fgets(STDIN));
+    return $upper ? strtoupper($input) : $input;
 }
 
 // The loop!
