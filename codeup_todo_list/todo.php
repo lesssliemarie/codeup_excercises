@@ -9,8 +9,7 @@ function list_items($list)
     // Return string of list items separated by newlines.
     $listString = '';
     foreach ($list as $key => $listItems) {
-        $key = $key + 1;
-        $listString .= '[' . $key . '] ' . $listItems . PHP_EOL;
+        $listString .= '[' . ($key + 1) . '] ' . $listItems . PHP_EOL;
     }
     return $listString;
 }
@@ -45,9 +44,9 @@ do {
         // Remove which item?
         echo 'Enter item number to remove: ';
         // Get array key
-        $key = get_input() - 1;
+        $key = get_input();
         // Remove from array
-        unset($items[$key]);
+        unset($items[$key - 1]);
         // Reorders array $keys
         $items = array_values($items);
     }
