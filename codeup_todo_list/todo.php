@@ -29,13 +29,21 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (S)ort items, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (S)ort items, (O)pen file, (Q)uit : ';
 
     // Get the input from user
     $input = get_input(TRUE);
 
     // Check for actionable input
-    if ($input == 'N') {
+    if ($input == 'O') {
+        echo 'Enter path of file to open: ';
+        $fileName = get_input();
+        $handle = fopen($fileName, "r");
+        $contents = fread($handle, filesize($fileName));
+        $contentsArray = explode("\n", $contents);
+        $items = $contentsArray;
+        fclose($handle);
+    } elseif ($input == 'N') {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
         $addTo = get_input(TRUE);
