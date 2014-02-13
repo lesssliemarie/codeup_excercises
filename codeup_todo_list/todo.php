@@ -70,18 +70,18 @@ do {
         echo 'Are you sure you want to remove the first item? Y/N: ';
         $confirmation = get_input(TRUE);
             
-            if ($confirmation == 'Y') {
-                array_shift($items);
-            } 
+        if ($confirmation == 'Y') {
+            array_shift($items);
+        } 
         
     } elseif ($input == 'L') {
         // Hidden command to remove last item
         echo 'Are you sure you want to remove the last item? Y/N: ';
         $confirmation = get_input(TRUE);
-        
+
         if ($confirmation == 'Y') {
-                array_pop($items);
-            } 
+            array_pop($items);
+        } 
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
