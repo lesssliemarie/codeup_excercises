@@ -14,7 +14,7 @@ function compare($array1, $array2) {
 	$commonValues = 0;
 
 	foreach ($array1 as $key => $value) {
-		$isCommon = is_numeric(array_search($value, $array2));
+		$isCommon = searchArrays($value, $array2);
 		if ($isCommon) {
 			$commonValues++;
 		}
