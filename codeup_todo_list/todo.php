@@ -36,10 +36,20 @@ do {
 
     // Check for actionable input
     if ($input == 'N') {
-        // Ask for entry
-        echo 'Enter item: ';
-        // Add entry to list array
-        $items[] = get_input();
+        // Add to beginning or end of array?
+        echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
+        $addTo = get_input(TRUE);
+        // Add according to input
+        if ($addTo == 'B') {
+            echo 'Enter item: ';
+            array_unshift($items, get_input());
+        } elseif ($addTo == 'E') {
+            echo 'Enter item: ';
+            array_push($items, get_input());
+        } else {
+            echo 'Enter item: ';
+            array_push($items, get_input());
+        }
     } elseif ($input == 'R') {
         // Remove which item?
         echo 'Enter item number to remove: ';
@@ -59,7 +69,7 @@ do {
         } elseif ($sortBy == 'Z') {
             rsort($items);
         }
-    }
+    } 
 // Exit when input is (Q)uit
 } while ($input != 'Q');
 
