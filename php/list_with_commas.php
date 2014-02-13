@@ -4,6 +4,7 @@
 function humanized_list($input) {
 
 	$input = explode(', ', $input);
+	sort($input);
 	$lastItem = array_pop($input);
 	$input = implode(', ', $input);
 	return $input . ' and ' . $lastItem;
