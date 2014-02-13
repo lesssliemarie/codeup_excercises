@@ -39,15 +39,13 @@ do {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
         $addTo = get_input(TRUE);
+        echo 'Enter item: ';
         // Add according to input, default to added at end
         if ($addTo == 'B') {
-            echo 'Enter item: ';
             array_unshift($items, get_input());
         } elseif ($addTo == 'E') {
-            echo 'Enter item: ';
             array_push($items, get_input());
         } else {
-            echo 'Enter item: ';
             array_push($items, get_input());
         }
     } elseif ($input == 'R') {
