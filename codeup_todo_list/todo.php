@@ -43,8 +43,6 @@ do {
         // Add according to input, default to add at end
         if ($addTo == 'B') {
             array_unshift($items, get_input());
-        } elseif ($addTo == 'E') {
-            array_push($items, get_input());
         } else {
             array_push($items, get_input());
         }
