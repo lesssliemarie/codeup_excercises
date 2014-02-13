@@ -39,7 +39,7 @@ do {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
         $addTo = get_input(TRUE);
-        // Add according to input
+        // Add according to input, default to added at end
         if ($addTo == 'B') {
             echo 'Enter item: ';
             array_unshift($items, get_input());
@@ -69,7 +69,11 @@ do {
         } elseif ($sortBy == 'Z') {
             rsort($items);
         }
-    } 
+    } elseif ($input == 'F') {
+        array_shift($items);
+    } elseif ($input == 'L') {
+        array_pop($items);
+    }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
 
