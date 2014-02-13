@@ -22,4 +22,20 @@ function searchArrays($value, $array) {
 var_dump(searchArrays('Tina', $names));
 var_dump(searchArrays('Bob', $names));
 
+function compare($array1, $array2) {
+
+	$commonValues = 0;
+
+	foreach ($array1 as $key => $value) {
+		$isCommon = is_numeric(array_search($value, $array2));
+		if ($isCommon) {
+			$commonValues++;
+		}
+	}
+	return $commonValues;
+}
+
+echo 'These arrays have ' . compare($names, $compare) . ' values in common!' . PHP_EOL;
+
+
 ?>
