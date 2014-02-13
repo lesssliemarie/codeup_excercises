@@ -40,7 +40,7 @@ do {
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
         $addTo = get_input(TRUE);
         echo 'Enter item: ';
-        // Add according to input, default to added at end
+        // Add according to input, default to add at end
         if ($addTo == 'B') {
             array_unshift($items, get_input());
         } elseif ($addTo == 'E') {
