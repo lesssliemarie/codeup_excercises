@@ -3,15 +3,14 @@
 // Converts array into list n1, n2, ..., and n3
 function humanized_list($input, $sort = FALSE) {
 
-	$input = explode(', ', $input);
+	$exploded = explode(', ', $input);
 	
-	if ($sort == TRUE) {
+	if ($sort) {
 		sort($input);
 	} 
 	
-	$lastItem = array_pop($input);
-	$input = implode(', ', $input);
-	return $input . ' and ' . $lastItem;
+	$lastItem = array_pop($exploded);
+	return implode(', ', $exploded) . ' and ' . $lastItem;
 }
 
 // List of famous peeps
