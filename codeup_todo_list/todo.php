@@ -68,8 +68,10 @@ do {
             rsort($items);
         }
     } elseif ($input == 'F') {
+        // Hidden command to remove first item
         array_shift($items);
     } elseif ($input == 'L') {
+        // Hidden command to remove last item
         array_pop($items);
     }
 // Exit when input is (Q)uit
