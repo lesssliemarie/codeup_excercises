@@ -31,8 +31,7 @@ function read_file($file) {
     return $contentsArray;
 }
 
-function confirmRemove() {
-    echo 'Are you sure you want to remove the first item? Y/N: ';
+function confirm() {
     $confirmation = get_input(TRUE);
     if ($confirmation == 'Y') {
         return TRUE;
@@ -40,6 +39,15 @@ function confirmRemove() {
         return FALSE;
     }
 }
+
+function save_file($filePath, $array) {
+    $handle = fopen($filePath, 'w+');
+    $saveList = implode("\n", $array);
+    fwrite($handle, $saveList);
+    fclose($handle);
+    echo 'Save was successful! ' . PHP_EOL;
+}
+
 // The loop!
 do {
     // Echo the list produced by the function
@@ -88,7 +96,8 @@ do {
         }
     } elseif ($input == 'F') {
         // Hidden command to remove first item    
-        $confirmation = confirmRemove();
+        echo 'Are you sure you want to remove the first item? Y/N: ';
+        $confirmation = confirm();
         if ($confirmation) {
             array_shift($items);
             echo 'You removed the first item from you list. ' . PHP_EOL;
@@ -96,7 +105,8 @@ do {
         
     } elseif ($input == 'L') {
         // Hidden command to remove last item
-        $confirmation = confirmRemove();
+        echo 'Are you sure you want to remove the last item? Y/N: ';
+        $confirmation = confirm();
         if ($confirmation) {
             array_pop($items);
             echo 'You removed the last item from you list. ' . PHP_EOL;
@@ -104,12 +114,21 @@ do {
     } elseif ($input == 'S') {
         // Where do you want to save your list?
         echo 'Where do you want to save your list? ' . PHP_EOL;
-        $file = get_input();
-        $handle = fopen($file, 'w+');
-        $saveList = implode("\n", $items);
-        fwrite($handle, $saveList);
-        fclose($handle);
-        echo 'Save was successful!' . PHP_EOL;
+        $filePath = get_input();
+        
+        if (!file_exists($filePath)) {
+           save_file($filePath, $items);
+        } else {
+            echo 'Are you sure you want to overwrite this file? Y/N: ';
+            $confirmation = confirm();
+            if ($confirmation) {
+                save_file($filePath, $items);
+            } else {
+                echo '!! SAVE CANCELED !! ' . PHP_EOL;
+            }
+        }
+
+
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
