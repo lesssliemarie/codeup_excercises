@@ -106,9 +106,8 @@ do {
         echo 'Where do you want to save your list? ' . PHP_EOL;
         $file = get_input();
         $handle = fopen($file, 'w+');
-        foreach ($items as $item) {
-            fwrite($handle, $item . PHP_EOL);
-        }
+        $saveList = implode("\n", $items);
+        fwrite($handle, $saveList);
         fclose($handle);
         echo 'Save was successful!' . PHP_EOL;
     }
