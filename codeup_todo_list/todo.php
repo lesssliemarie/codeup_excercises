@@ -26,9 +26,8 @@ function get_input($upper = FALSE)
 function read_file($file) {
     $handle = fopen($file, "r");
     $contents = fread($handle, filesize($file));
-    $contentsArray = explode("\n", $contents);
     fclose($handle);
-    return $contentsArray;
+    return explode("\n", $contents);
 }
 
 function confirm() {
