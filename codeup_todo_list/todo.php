@@ -63,6 +63,7 @@ do {
         // Give file menu
         echo 'Do you want to (O)pen a file or (S)ave a file? ';
         $openOrSave = get_input(TRUE);
+        
         if ($openOrSave == 'O') {
             echo 'Enter path of file to open: ';
             $file = get_input();
@@ -71,7 +72,7 @@ do {
             // Where do you want to save your list?
             echo 'Where do you want to save your list? ' . PHP_EOL;
             $filePath = get_input();
-            
+            // Check if file exits and confirm overwrite
             if (!file_exists($filePath)) {
                save_file($filePath, $items);
             } else {
