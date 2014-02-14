@@ -23,6 +23,14 @@ function get_input($upper = FALSE)
     return $upper ? strtoupper($input) : $input;
 }
 
+function read_file($fileName) {
+    $handle = fopen($fileName, "r");
+    $contents = fread($handle, filesize($fileName));
+    $contentsArray = explode("\n", $contents);
+    fclose($handle);
+    return $contentsArray;
+}
+
 // The loop!
 do {
     // Echo the list produced by the function
@@ -38,11 +46,8 @@ do {
     if ($input == 'O') {
         echo 'Enter path of file to open: ';
         $fileName = get_input();
-        $handle = fopen($fileName, "r");
-        $contents = fread($handle, filesize($fileName));
-        $contentsArray = explode("\n", $contents);
-        $items = $contentsArray;
-        fclose($handle);
+        $items = read_file($fileName);
+
     } elseif ($input == 'N') {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
