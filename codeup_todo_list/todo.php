@@ -23,9 +23,9 @@ function get_input($upper = FALSE)
     return $upper ? strtoupper($input) : $input;
 }
 
-function read_file($fileName) {
-    $handle = fopen($fileName, "r");
-    $contents = fread($handle, filesize($fileName));
+function read_file($file) {
+    $handle = fopen($file, "r");
+    $contents = fread($handle, filesize($file));
     $contentsArray = explode("\n", $contents);
     fclose($handle);
     return $contentsArray;
@@ -46,7 +46,7 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (S)ort items, (O)pen file, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (SO)rt items, (O)pen file, (S)ave file, (Q)uit : ';
 
     // Get the input from user
     $input = get_input(TRUE);
@@ -54,9 +54,8 @@ do {
     // Check for actionable input
     if ($input == 'O') {
         echo 'Enter path of file to open: ';
-        $fileName = get_input();
-        $items = read_file($fileName);
-
+        $file = get_input();
+        $items = read_file($file);
     } elseif ($input == 'N') {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
@@ -77,7 +76,7 @@ do {
         unset($items[$key - 1]);
         // Reorders array $keys
         $items = array_values($items);
-    } elseif ($input == 'S') {      
+    } elseif ($input == 'SO') {      
         // How do you want to sort?
         echo 'Would you like to sort (A)-Z, or (Z)-A?: ';
         $sortBy = get_input(TRUE);
@@ -102,6 +101,16 @@ do {
             array_pop($items);
             echo 'You removed the last item from you list. ' . PHP_EOL;
         } 
+    } elseif ($input == 'S') {
+        // Where do you want to save your list?
+        echo 'Where do you want to save your list? ' . PHP_EOL;
+        $file = get_input();
+        $handle = fopen($file, 'w+');
+        foreach ($items as $item) {
+            fwrite($handle, $item . PHP_EOL);
+        }
+        fclose($handle);
+        echo 'Save was successful!' . PHP_EOL;
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
