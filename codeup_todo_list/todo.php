@@ -32,8 +32,8 @@ function read_file($file) {
 }
 
 function confirm() {
-    $confirmation = get_input(TRUE);
-    if ($confirmation == 'Y') {
+    $input = get_input(TRUE);
+    if ($input == 'Y') {
         return TRUE;
     } else {
         return FALSE;
@@ -41,7 +41,7 @@ function confirm() {
 }
 
 function save_file($filePath, $array) {
-    $handle = fopen($filePath, 'w+');
+    $handle = fopen($filePath, 'w');
     $saveList = implode("\n", $array);
     fwrite($handle, $saveList);
     fclose($handle);
@@ -54,16 +54,38 @@ do {
     echo list_items($items);
 
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (SO)rt items, (O)pen file, (S)ave file, (Q)uit : ';
+    echo '(N)ew item, (R)emove item, (SO)rt items, (F)ile menu, (Q)uit : ';
 
     // Get the input from user
     $input = get_input(TRUE);
 
     // Check for actionable input
-    if ($input == 'O') {
-        echo 'Enter path of file to open: ';
-        $file = get_input();
-        $items = read_file($file);
+    if ($input == 'F') {
+        // Give file menu
+        echo 'Do you want to (O)pen a file or (S)ave a file? ';
+        $openOrSave = get_input(TRUE);
+        if ($openOrSave == 'O') {
+            echo 'Enter path of file to open: ';
+            $file = get_input();
+            $items = read_file($file);
+        } elseif ($openOrSave == 'S') {
+            // Where do you want to save your list?
+            echo 'Where do you want to save your list? ' . PHP_EOL;
+            $filePath = get_input();
+            
+            if (!file_exists($filePath)) {
+               save_file($filePath, $items);
+            } else {
+                echo 'Are you sure you want to overwrite this file? Y/N: ';
+                $confirmation = confirm();
+                
+                if ($confirmation) {
+                    save_file($filePath, $items);
+                } else {
+                    echo '!! SAVE CANCELED !! ' . PHP_EOL;
+                }
+            }
+        }
     } elseif ($input == 'N') {
         // Add to beginning or end of array?
         echo 'Do you want to add it to the (B)eginning or (E)nd of the list? ';
@@ -94,7 +116,7 @@ do {
         } elseif ($sortBy == 'Z') {
             rsort($items);
         }
-    } elseif ($input == 'F') {
+    } elseif ($input == 'FIRST') {
         // Hidden command to remove first item    
         echo 'Are you sure you want to remove the first item? Y/N: ';
         $confirmation = confirm();
@@ -103,7 +125,7 @@ do {
             echo 'You removed the first item from you list. ' . PHP_EOL;
         }
         
-    } elseif ($input == 'L') {
+    } elseif ($input == 'LAST') {
         // Hidden command to remove last item
         echo 'Are you sure you want to remove the last item? Y/N: ';
         $confirmation = confirm();
@@ -111,24 +133,6 @@ do {
             array_pop($items);
             echo 'You removed the last item from you list. ' . PHP_EOL;
         } 
-    } elseif ($input == 'S') {
-        // Where do you want to save your list?
-        echo 'Where do you want to save your list? ' . PHP_EOL;
-        $filePath = get_input();
-        
-        if (!file_exists($filePath)) {
-           save_file($filePath, $items);
-        } else {
-            echo 'Are you sure you want to overwrite this file? Y/N: ';
-            $confirmation = confirm();
-            if ($confirmation) {
-                save_file($filePath, $items);
-            } else {
-                echo '!! SAVE CANCELED !! ' . PHP_EOL;
-            }
-        }
-
-
     }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
