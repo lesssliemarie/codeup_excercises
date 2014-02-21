@@ -4,7 +4,7 @@
 // If the word is a palindrome
 
 function is_palindrome($word) {
-	$word = strtolower(str_replace(' ', '', $word));
+	$word = preg_replace("/[^a-z]/", '', strtolower($word));
 	$reverse = strrev($word);
 	if ($word == $reverse) {
 		return TRUE;
@@ -23,7 +23,7 @@ function runTest($word) {
 
 // Test several known palindromes
 runTest('Amore Roma');
-runTest('A man a plan a canal Panama');
+runTest('A man, a plan, a canal, Panama');
 runTest("No x in Nixon");
 
 // Test regular words
