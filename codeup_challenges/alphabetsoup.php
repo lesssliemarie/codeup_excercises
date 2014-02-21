@@ -25,6 +25,6 @@ echo alphabet_soup("hello world");
 echo alphabet_soup("leslie marie");
 echo alphabet_soup("jimi jims");
 echo alphabet_soup("hello codeup");
-echo alphabet_soup("tgif tgif tgif");
+echo alphabet_soup("richard ortega");
 
 ?>
