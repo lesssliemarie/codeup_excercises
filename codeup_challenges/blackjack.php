@@ -116,7 +116,6 @@ while (getHandTotal($player) < 21) {
   if ($hitOrStay == 'H') {
   	drawCard($player, $deck);
   } elseif ($hitOrStay == 'S') {
-  	echo "STAY";
   	break;
   }
   echo echoHand($player, "PLAYER");
