@@ -9,5 +9,20 @@ if ($mysqli->connect_errno) {
 	echo $mysqli->host_info . PHP_EOL;
 }
 
+// Create query to create table and assign to var
+$query = 'CREATE TABLE users (
+	id INT unsigned NOT NULL AUTO_INCREMENT,
+	name VARCHAR(240) NOT NULL,
+	location VARCHAR(240) NOT NULL,
+	description VARCHAR(600) NOT NULL,
+	date_established DATE NOT NULL,
+	area_in_acres FLOAT NOT NULL,
+	PRIMARY KEY (id)
+	);';
+
+// Run query, if there are errors then display them
+if (!$mysqli->query($query)) {
+    throw new Exception("Table creation failed: (" . $mysqli->errno . ") " . $mysqli->error);
+}
 
 ?>
