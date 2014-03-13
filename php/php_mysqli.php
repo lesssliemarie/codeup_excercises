@@ -1,6 +1,6 @@
 <?php
 // Connect to database
-$mysqli = @new mysqli('127.0.0.1', 'queenbee', 'b8z92u9z', 'employees');
+$mysqli = @new mysqli('127.0.0.1', 'queenbee', 'b8z92u9z', 'codeup_mysqli_test_db');
 
 // Check for errors
 if ($mysqli->connect_errno) {
