@@ -9,8 +9,8 @@ if ($mysqli->connect_errno) {
 	echo $mysqli->host_info . PHP_EOL;
 }
 
-// // Create query to create table and assign to var
-// $query = 'CREATE TABLE users (
+// Create query to create table and assign to var
+// $query = 'CREATE TABLE national_parks (
 // 	id INT unsigned NOT NULL AUTO_INCREMENT,
 // 	name VARCHAR(240) NOT NULL,
 // 	location VARCHAR(240) NOT NULL,
@@ -53,7 +53,7 @@ $parks = [
 	[
 	'name' => 'Badlands',
 	'location' => 'South Dakota',
-	'description' => 'The Badlands are a collection of buttes, pinnacles, spires, and grass prairies. It has the worlds richest fossil beds from the Oligocene epoch, and there is wildlife including bison, bighorn sheep, black-footed ferrets, and swift foxes.',
+	'description' => "The Badlands are a collection of buttes, pinnacles, spires, and grass prairies. It has the world''s richest fossil beds from the Oligocene epoch, and there is wildlife including bison, bighorn sheep, black-footed ferrets, and swift foxes.",
 	'date_established' => '1978-11-10',
 	'area_in_acres' => '242755.94'
 	],
@@ -101,7 +101,7 @@ $parks = [
 	[
 	'name' => 'Capitol Reef',
 	'location' => 'Utah',
-	'description' => 'The parks Waterpocket Fold is a 100-mile (160 km) monocline that shows the Earths geologic layers. Other natural features are monoliths and sandstone domes and cliffs shaped like the United States Capitol.',
+	'description' => "The park''s Waterpocket Fold is a 100-mile (160 km) monocline that shows the Earth''s geologic layers. Other natural features are monoliths and sandstone domes and cliffs shaped like the United States Capitol.",
 	'date_established' => '1971-12-18',
 	'area_in_acres' => '241904.26'
 	]
